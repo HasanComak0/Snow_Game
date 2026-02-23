@@ -644,7 +644,7 @@ MonoBehaviour:
   bomberZombiePrefab: {fileID: 8288649152485347029, guid: 509a6964a6084dd44ad1bf5eedbd0afa, type: 3}
   ShieldZombiePrefab: {fileID: 3533209081639732747, guid: 27c01890dee9f0f46a6f8637364635b3, type: 3}
   timer: 0
-  maxTimer: 8
+  maxTimer: 9
   minTimer: 2
 --- !u!212 &716786527
 SpriteRenderer:
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   bomberZombiePrefab: {fileID: 8288649152485347029, guid: 509a6964a6084dd44ad1bf5eedbd0afa, type: 3}
   ShieldZombiePrefab: {fileID: 3533209081639732747, guid: 27c01890dee9f0f46a6f8637364635b3, type: 3}
   timer: 0
-  maxTimer: 7.6
+  maxTimer: 5
   minTimer: 2
 --- !u!1 &1242389579
 GameObject:
@@ -1329,7 +1329,7 @@ MonoBehaviour:
   bomberZombiePrefab: {fileID: 8288649152485347029, guid: 509a6964a6084dd44ad1bf5eedbd0afa, type: 3}
   ShieldZombiePrefab: {fileID: 3533209081639732747, guid: 27c01890dee9f0f46a6f8637364635b3, type: 3}
   timer: 0
-  maxTimer: 9.7
+  maxTimer: 5
   minTimer: 2
 --- !u!212 &1321003877
 SpriteRenderer:

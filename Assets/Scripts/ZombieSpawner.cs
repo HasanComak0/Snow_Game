@@ -34,9 +34,9 @@ public class ZombieSpawner : MonoBehaviour
             timer = 0;
             sayac++;
         }
-        if(sayac >10)
+        if(sayac >30)
         {
-            maxTimer -= 0.1f;
+            maxTimer -= 0.05f;
         }
         if (maxTimer <= minTimer) 
         {

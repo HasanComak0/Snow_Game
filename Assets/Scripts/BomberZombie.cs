@@ -18,8 +18,6 @@ public class BomberZombie : MonoBehaviour
         if (Health <= 0)
         {
 
-            isDead = true;
-
             bulletSpawn bs = FindAnyObjectByType<bulletSpawn>();
             if (bs != null)
             {
