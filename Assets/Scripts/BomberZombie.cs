@@ -4,6 +4,7 @@ public class BomberZombie : MonoBehaviour
 {
     public float Health = 20;
     public float speed = 2;
+    public bool isDead = false;
 
     void Update()
     {
@@ -11,9 +12,20 @@ public class BomberZombie : MonoBehaviour
     }
     public void TakeDamage(int hasar)
     {
+        if (isDead) return;
+
         Health -= hasar;
         if (Health <= 0)
         {
+
+            isDead = true;
+
+            bulletSpawn bs = FindAnyObjectByType<bulletSpawn>();
+            if (bs != null)
+            {
+                bs.AddXp(10);
+            }
+
             Explode();
             Debug.Log("Bomber Zombie Death");
             Destroy(gameObject);
@@ -21,13 +33,26 @@ public class BomberZombie : MonoBehaviour
     }
     void Explode()
     {
+        if(isDead) return;
+        isDead = true;
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 3f);
         foreach (Collider2D hit in hits)
         {
             if (hit.gameObject == this.gameObject)
                 continue;
 
-            if (hit.CompareTag("Zombie"))
+            if (hit.CompareTag("nZombie"))
+            {
+                hit.SendMessage("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
+                Debug.Log("Patladý");
+            }
+            if (hit.CompareTag("sZombie"))
+            {
+                hit.SendMessage("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
+                Debug.Log("Patladý");
+            }
+            if (hit.CompareTag("bZombie"))
             {
                 hit.SendMessage("TakeDamage", 999, SendMessageOptions.DontRequireReceiver);
                 Debug.Log("Patladý");
@@ -39,8 +64,7 @@ public class BomberZombie : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             Destroy(collision.gameObject);
-            TakeDamage(10);
-            
+            TakeDamage(10); 
         }
     }
 }
