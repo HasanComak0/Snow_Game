@@ -6,22 +6,34 @@ public class BaseHealth : MonoBehaviour
     public float health =100;
     public TextMeshProUGUI txt_health;
     public GameObject txt_gameOver;
+    public GameObject HomeButton;
+    public GameObject RestartButton;
+
+    private bool isDead = false;
 
     private void Start()
     {
         txt_health.text = "Healht: " + health;
+        Time.timeScale = 1f;
     }
     void Update()
     {
         if(health <= 0)
         {
-            txt_health.text = "Health: 0";
-            txt_gameOver.SetActive(true);
-            Time.timeScale = 0f;
+            if (health < 0 && !isDead)
+            {
+                txt_health.text = "Health: 0";
+                txt_gameOver.SetActive(true);
+                HomeButton.SetActive(true);
+                RestartButton.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
     }
     public void reduceHealth(float h)//can düþürme
     {
+        if (isDead) return;
+
         health -= h;
         txt_health.text = "Health: " + health;
     }
